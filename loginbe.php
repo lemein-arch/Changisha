@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Login successful
     session_start();
     $_SESSION['user_id'] = mysqli_fetch_assoc($result)['user_id'];
-    header("Location: index.php");
+    header("Location: startprojects.php");
     exit();
   } else {
     // Login failed
