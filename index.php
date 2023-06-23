@@ -1,3 +1,14 @@
+<?php
+require 'connection.php';
+require 'functions.php';
+
+// Function to check if the user is logged in
+function is_user_logged_in() {
+  return isset($_SESSION['user_id']);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,9 +42,15 @@
         <li class="nav-item">
           <a class="nav-link" href="#contact">Contact</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login.php">Login</a>
-        </li>
+        <?php if (is_user_logged_in()) { ?>
+          <li class="nav-item">
+            <a class="nav-link" href="logout.php">Log Out</a>
+          </li>
+        <?php } else { ?>
+          <li class="nav-item">
+            <a class="nav-link" href="login.php">Log In</a>
+          </li>
+        <?php } ?>
       </ul>
     </div>
   </nav>
@@ -47,22 +64,22 @@
   </header>
 
   <section class="container about-section">
-    <div class="row">
-      <div class="col-md-6">
-        <h2 id="about">About Us</h2>
-        <p>At Cladi Sportswear, we believe that every athlete, from beginners to pros, deserves to feel confident, comfortable,
-             and stylish while pursuing their passion. We strive to provide high-quality sportswear that blends functionality with
-              trendy designs, empowering individuals to unleash their full potential. Our team is dedicated to curating a collection 
-              that caters to diverse athletic needs, ensuring exceptional performance and uncompromising style. Whether you're hitting 
-              the gym, breaking a sweat on the field, or embracing an active lifestyle, Cladi Sportswear is here to outfit you with gear 
-              that not only enhances your performance but also makes a bold statement. 
-            Join us on this athletic journey, where fashion meets athleticism, and discover the perfect fusion of sport and style.</p>
-      </div>
-      <div class="col-md-6">
-        <img src="images/home1.jpg" alt="About Us Image" class="img-fluid">
-      </div>
+  <div class="row">
+    <div class="col-md-6 d-flex flex-column">
+      <h2 id="about">About Us</h2>
+      <p>At Cladi Sportswear, we believe that every athlete, from beginners to pros, deserves to feel confident, comfortable,
+         and stylish while pursuing their passion. We strive to provide high-quality sportswear that blends functionality with
+          trendy designs, empowering individuals to unleash their full potential. Our team is dedicated to curating a collection 
+          that caters to diverse athletic needs, ensuring exceptional performance and uncompromising style. Whether you're hitting 
+          the gym, breaking a sweat on the field, or embracing an active lifestyle, Cladi Sportswear is here to outfit you with gear 
+          that not only enhances your performance but also makes a bold statement. 
+        Join us on this athletic journey, where fashion meets athleticism, and discover the perfect fusion of sport and style.</p>
     </div>
-  </section>
+    <div class="col-md-6 d-flex align-items-center">
+      <img src="images/home1.jpg" alt="About Us Image" class="img-fluid" style="max-height: 400px; max-width: 600px;">
+    </div>
+  </div>
+</section>
 
   <section class="container bg-light services-section">
     <div class="row">

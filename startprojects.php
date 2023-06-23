@@ -1,9 +1,21 @@
+<?php
+require 'connection.php';
+require 'functions.php';
+
+
+// Check if the user is logged in
+check_login($con);
+// If the user is logged in, continue with the rest of the code for the startprojects.php page
+// ...
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Changisha</title>
+  <title>Changisha|Start a Project</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
   <style>
@@ -69,11 +81,6 @@
         <div class="form-group">
           <label for="currentFunds">Current Funds:</label>
           <input type="number" class="form-control" id="currentFunds" name="currentFunds" required>
-        </div>
-
-        <div class="form-group">
-          <label for="pledgedSupporters">Pledged Supporters:</label>
-          <input type="number" class="form-control" id="pledgedSupporters" name="pledgedSupporters" required>
         </div>
 
         <div class="form-group">
