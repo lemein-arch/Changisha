@@ -36,7 +36,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       // Password is correct
       session_start();
       $_SESSION['user_id'] = $row['user_id'];
-      header("Location: startprojects.php");
+
+      // Check if the user is an admin
+      if ($row['isAdmin'] == 1) {
+        header("Location: admin/admin.php");
+      } else {
+        header("Location: startprojects.php");
+      }
+
       exit();
     } else {
       // Password is incorrect
@@ -52,4 +59,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-
