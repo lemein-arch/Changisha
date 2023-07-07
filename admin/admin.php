@@ -1,3 +1,14 @@
+<?php
+require '../connection.php';
+require '../functions.php';
+
+
+// Check if the user is logged in
+check_login($con);
+// If the user is logged in, continue with the rest of the code for the startprojects.php page
+// ...
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +70,7 @@
           <a class="nav-link" href="projects.php">Projects</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="logout.php">Log Out</a>
+          <a class="nav-link" href="adminlogout.php">Log Out</a>
         </li>
       </ul>
     </div>
@@ -72,7 +83,10 @@
           <a href="dashboard.php">Admin Dashboard</a>
         </li>
         <li>
-          <a href="users.php">Manage Users</a>
+          <a href="campaigns.php">Campaigns</a>
+        </li>
+        <li>
+          <a href="manageusers.php">Manage Users</a>
         </li>
       </ul>
     </div>

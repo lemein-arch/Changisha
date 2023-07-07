@@ -1,3 +1,38 @@
+<?php
+require '../connection.php';
+require '../functions.php';
+
+// Create a new database connection
+$con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+
+// Check if the connection is successful
+if (!$con) {
+  die("Failed to connect to the database!");
+}
+// Prepare the SQL query to retrieve the total number of users with isAdmin = 0
+$queryUsers = "SELECT COUNT(*) as total_users FROM users WHERE isAdmin = 0";
+
+// Execute the query to get the number of users
+$resultUsers = mysqli_query($con, $queryUsers);
+
+// Fetch the total number of users
+$rowUsers = mysqli_fetch_assoc($resultUsers);
+$totalUsers = $rowUsers['total_users'];
+
+// Prepare the SQL query to retrieve the number of active campaigns
+$query = "SELECT COUNT(*) as active_campaigns FROM projects WHERE p_active = 1";
+
+// Execute the query
+$result = mysqli_query($con, $query);
+
+// Fetch the number of active campaigns
+$row = mysqli_fetch_assoc($result);
+$activeCampaigns = $row['active_campaigns'];
+
+// Close the database connection
+mysqli_close($con);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +52,7 @@
     .content-wrapper {
       flex: 1;
       display: flex;
+      margin-top: 20px; /* Add margin between navbar and card */
     }
     
     .sidebar {
@@ -43,12 +79,22 @@
     .sidebar a:hover {
       color: #000;
     }
+    
+    /* Add custom styling for the card */
+    .custom-card {
+      background-color: #007bff;
+      color: #fff;
+    }
+    
+    .custom-card .card-body {
+      padding: 20px;
+    }
   </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="admin.php"><b>Changisha</b></a>
+    <a class="navbar-brand" href="dashboard.php"><b>Changisha</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -72,13 +118,43 @@
           <a href="dashboard.php">Admin Dashboard</a>
         </li>
         <li>
-          <a href="users.php">Manage Users</a>
+          <a href="campaigns.php">Campaigns</a>
+        </li>
+        <li>
+          <a href="manageprojects.php">Manage Projects</a>
         </li>
       </ul>
     </div>
 
     <div class="col-md-9">
-      <!-- Content of your admin.php page goes here -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card custom-card text-center">
+              <div class="card-body">
+                <h5 class="card-title">Total Users</h5>
+                <p class="card-text"><?php echo $totalUsers; ?></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card custom-card text-center">
+              <div class="card-body">
+                <h5 class="card-title">No. of Active Campaigns</h5>
+                <p class="card-text"><?php echo $activeCampaigns; ?></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card custom-card text-center">
+              <div class="card-body">
+                <h5 class="card-title">Donations</h5>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
