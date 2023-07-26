@@ -1,14 +1,18 @@
 <?php
 require '../connection.php';
-require '../functions.php';
+require 'adminfunctions.php';
+
+verify_admin_login();
 
 // Create a new database connection
 $con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 // Check if the connection is successful
 if (!$con) {
-  die("Failed to connect to the database!");
+    die("Failed to connect to the database!");
 }
+
+
 // Prepare the SQL query to retrieve the total number of users with isAdmin = 0
 $queryUsers = "SELECT COUNT(*) as total_users FROM users WHERE isAdmin = 0";
 
@@ -32,6 +36,7 @@ $activeCampaigns = $row['active_campaigns'];
 // Close the database connection
 mysqli_close($con);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +110,7 @@ mysqli_close($con);
           <a class="nav-link" href="projects.php">Projects</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="logout.php">Log Out</a>
+          <a class="nav-link" href="adminlogout.php">Log Out</a>
         </li>
       </ul>
     </div>

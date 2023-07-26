@@ -4,7 +4,6 @@
 require 'connection.php';
 require 'functions.php';
 
-
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Retrieve the form data
@@ -36,22 +35,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       // Password is correct
       session_start();
       $_SESSION['user_id'] = $row['user_id'];
-
-      // Check if the user is an admin
-      if ($row['isAdmin'] == 1) {
-        header("Location: admin/admin.php");
-      } else {
-        header("Location: startprojects.php");
-      }
-
+      header("Location: startprojects.php");
       exit();
     } else {
       // Password is incorrect
-      echo "Login failed!";
+      echo "Incorrect Password!";
     }
   } else {
     // User not found
-    echo "Login failed!";
+    echo "User Not Found!!!";
   }
 
   // Close the database connection

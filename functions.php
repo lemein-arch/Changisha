@@ -2,20 +2,34 @@
 session_start();
 
 function check_login($con) {
+    $user_data = null; // Assign an initial value to $user_data
+
     if (isset($_SESSION['user_id'])) {
         $id = $_SESSION['user_id'];
-        $query = "SELECT * FROM users WHERE user_id = '$id' LIMIT 1";
-        $result = mysqli_query($con, $query);
 
-        if ($result && mysqli_num_rows($result) > 0) {
-            $user_data = mysqli_fetch_assoc($result);
-            return $user_data;
+        if (!empty($id)) {
+            $query = "SELECT * FROM users WHERE user_id = '$id' LIMIT 1";
+            $result = mysqli_query($con, $query);
+
+            if ($result && mysqli_num_rows($result) > 0) {
+                $user_data = mysqli_fetch_assoc($result);
+
+                // Redirect to the start projects page only if not already on startprojects.php
+                if (basename($_SERVER['PHP_SELF']) !== 'startprojects.php') {
+                    header("Location: ../startprojects.php");
+                    die;
+                }
+            }
         }
     }
 
-    // Redirect to login
-    header("Location: login.php");
-    die;
+    // Redirect to login if not already on login.php
+    if (basename($_SERVER['PHP_SELF']) !== 'login.php') {
+        header("Location: ../login.php");
+        die;
+    }
+
+    return $user_data; // Return the user data or null
 }
 
 function random_num($length) {

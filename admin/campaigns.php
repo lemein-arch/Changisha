@@ -59,7 +59,7 @@
           <a class="nav-link" href="projects.php">Projects</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="logout.php">Log Out</a>
+          <a class="nav-link" href="adminlogout.php">Log Out</a>
         </li>
       </ul>
     </div>
