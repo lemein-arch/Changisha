@@ -1,7 +1,7 @@
 <?php
 
 // Include the connection file
-require '../connection.php';
+require 'config.php';
 require 'adminfunctions.php';
 ?>
 

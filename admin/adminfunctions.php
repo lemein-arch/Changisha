@@ -7,7 +7,7 @@ function verify_admin_login() {
         // Admin is not logged in, redirect to the login page
         header("Location: adminlog.php");
         exit();
-    } else {
+    }/* else {
         // Admin is logged in, update the last activity time
         if (isset($_SESSION['last_activity'])) {
             $session_timeout = 300; // 300 seconds = 5 minutes
@@ -22,6 +22,6 @@ function verify_admin_login() {
         }
 
         $_SESSION['last_activity'] = time();
-    }
+    } */
 }
 ?>

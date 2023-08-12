@@ -4,7 +4,11 @@ require 'functions.php';
 
 
 // Check if the user is logged in
-check_login($con);
+if (!isset($_SESSION['user_id'])) {
+  // Redirect the user to the login page or any other desired location
+  header("Location: login.php");
+  exit(); // Make sure to include exit() after the header() function to stop further script execution
+}
 // If the user is logged in, continue with the rest of the code for the startprojects.php page
 // ...
 ?>

@@ -2,13 +2,15 @@
 
 // Include the connection file
 require 'connection.php';
-require 'functions.php';
+
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Retrieve the form data
   $email = $_POST["email"];
   $password = $_POST["password"];
+
+ 
 
   // Create a new database connection
   $con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
@@ -23,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Execute the query
   $result = mysqli_query($con, $query);
+  
 
   // Check if the login is successful
   if (mysqli_num_rows($result) == 1) {
@@ -35,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       // Password is correct
       session_start();
       $_SESSION['user_id'] = $row['user_id'];
+    
       header("Location: startprojects.php");
       exit();
     } else {
@@ -50,4 +54,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   mysqli_close($con);
 }
 
+// require 'functions.php';
 ?>

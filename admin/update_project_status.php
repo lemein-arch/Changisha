@@ -1,5 +1,5 @@
 <?php
-require '../connection.php';
+require 'config.php';
 
 // Get the project ID from the AJAX request
 $projectId = $_POST['projectId'];

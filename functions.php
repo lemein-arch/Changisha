@@ -24,10 +24,10 @@ function check_login($con) {
     }
 
     // Redirect to login if not already on login.php
-    if (basename($_SERVER['PHP_SELF']) !== 'login.php') {
-        header("Location: ../login.php");
-        die;
-    }
+    // if (basename($_SERVER['PHP_SELF']) !== 'login.php') {
+    //     header("Location: ../Crowdfunding/login.php");
+    //     die;
+    // }
 
     return $user_data; // Return the user data or null
 }

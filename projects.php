@@ -14,7 +14,7 @@ require 'functions.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Changisha</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="main-wrapper">
@@ -60,6 +60,7 @@ require 'functions.php';
     // Close the database connection
     mysqli_close($con);
     ?>
+    
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

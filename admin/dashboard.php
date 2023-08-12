@@ -1,8 +1,8 @@
 <?php
-require '../connection.php';
+require 'config.php';
 require 'adminfunctions.php';
 
-verify_admin_login();
+//verify_admin_login();
 
 // Create a new database connection
 $con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);

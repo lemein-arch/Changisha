@@ -1,10 +1,3 @@
-<?php
-
-// Include the connection file
-require 'connection.php';
-require 'functions.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,3 +55,5 @@ require 'functions.php';
 </body>
 
 </html>
+
+
